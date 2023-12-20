@@ -1,4 +1,2 @@
-# Web-projects
-Basics web projects practiced in first three semester.<br>
-
-
+# Web-projects<br>
+Basics web projects practiced in starting three semester of Computer Science journey.
