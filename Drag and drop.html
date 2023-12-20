@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>    <title>Document</title>
+
+    <title>Document</title>
+    <style>
+          *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         .DC{
+            background:linear-gradient(to right bottom, black 30%, silver 230%);
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: wheat;
+        }
+
+        #SDC{
+            background:linear-gradient(to left top, rgb(50, 59, 70)  , #262626 120%);
+            height: 50vh;
+            width: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            cursor:no-drop;
+            /* border: 1px solid black; */
+
+        }
+        #label{
+            margin: 20px;
+            height: 50vh;
+            width: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid black; */
+            flex-direction: column;
+            border-radius: 5px;
+            cursor:grab ;
+            color: silver;
+        }
+        #cloud{
+            color: rgb(194, 102, 239);
+            font-size: 120px;
+        }
+        #icon{
+            border: 2px dashed rgb(126, 73, 210);
+            display: flex;
+            background-position:center ;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 15px;
+            padding: 20px;
+            height: 100%;
+            width: 80%;
+            margin: 5px;
+            
+        }
+        #Dtext{
+            margin-top: 25px;
+            font-size: 28x;
+            color: #eec2f7;
+            font-weight:900 ;
+        }
+        #Dtext2{
+            margin-top: 15px;
+            font-size: 13px;
+            color: #9d9c9d;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="DC">
+        <div id="SDC">
+        <label for="input-file" id="label">
+            <input type="file" hidden accept="image,html" id="input-file"  >
+            <div id="icon">
+         <i class="fas fa-cloud-upload-alt" id="cloud"></i>
+               <p id="Dtext"> Drag & Drop or Browse image</p>
+               <p id="Dtext2">upload any image from your dektop</p>
+            
+            </div>
+            </label></div>
+
+        </div>
+
+        <script>
+            const dropArea =document.getElementById("label")
+const inputfile =document.getElementById("input-file")
+const  imageView=document.getElementById("icon")
+
+inputfile.addEventListener("change",uploadimage)
+function uploadimage(){
+    
+    let imgLink=URL.createObjectURL(inputfile.files[0]);
+    imageView.style.backgroundImage=`url(${imgLink})`;
+    imageView.textContent="";
+    imageView.style.border=0;
+} 
+
+dropArea.addEventListener("dragover",(e)=>{
+    e.preventDefault();//It will prevent default feature(otherwise it will open draged image)
+})
+dropArea.addEventListener("drop",(e)=>{
+    e.preventDefault();//It will prevent default feature(otherwise it will open draged image)
+  inputfile.files=e.dataTransfer.files;
+  uploadimage()
+})
+
+dropArea.addEventListener("dragover", () => {
+  imageView.style.backgroundColor = 'rgba(198, 169, 243,0.3)';
+});
+dropArea.addEventListener("dragleave", () => {
+  imageView.style.backgroundColor = '';
+});
+
+
+        </script>
+</body>
+</html>

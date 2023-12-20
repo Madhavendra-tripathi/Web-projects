@@ -1,0 +1,156 @@
+<!-- You cant catch Submit button unitill you will write correct password
+Password:12ab
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ab{
+            
+            flex-wrap: wrap;
+            height: 300px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            background-color: black;
+            top:100px;
+            margin: auto;
+            padding:35px ;
+            
+            
+        }
+        #text{
+            border: 2px solid white;
+            border-radius:8px;
+            text-align: center;
+            background-color: aqua;
+            color:black ;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        p{  margin-top:5px ;
+            font-size: 15px;
+            
+            margin-left: 0px;
+        }
+        #password{
+            border: 2px solid white;
+            border-radius:8px;
+            text-align: center;
+            background-color: aqua;
+            color:black ;
+            font-size: 20px;
+            margin-bottom: 20px;
+            
+        }
+        button{
+            /* height: 40px; */
+            padding: 10px;
+            box-shadow: 0px 0px 40px 3px aqua;
+            border: 2px solid aqua;
+            font-size: 25px;
+            color: aqua;
+            border-radius: 5px;
+            background-color: black;
+            /* transform: skew(-15deg); */
+        }
+        #abc{
+            margin-top: 10px;
+            height:90px;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: skew(0deg);
+            /* background-color: black; */
+        }
+        #btn{
+            transition: 0.2s all;
+
+        }
+    </style>
+</head>
+<body bgcolor="aqua">
+    <p>You can't catch(click) Submit button unitil you will write correct password
+       <br> Password:12ab</p>
+    <br><br><br><br><br><br><br>
+    <form onsubmit="func()" autocomplete="off" >
+<div id="ab">
+    <input type="text" id="text" placeholder="Enter name" ><br><br>
+    <p id="stmt"oninput="check()"></p>
+    <input type="password" id="password" oninput="check()" placeholder="Password" required/>
+   <div id="abc" > <button type="submit" id="btn">Submit</button>
+   
+</div>
+</div></form>
+<script>
+    
+     check=()=>{
+        var password="12ab";
+        var a=document.getElementById("password").value
+        var stmt=document.getElementById("stmt")
+        if(a==password){
+            document.getElementById("password").style.border="4px solid lime";
+            stmt.textContent="Correct password";
+            stmt.style.color="lime";
+        }
+        else{
+            document.getElementById("password").style.border="3px solid red";
+            stmt.textContent="Incorrect password";
+            stmt.style.color="red";
+        }
+    }
+    abc=()=>{
+        var password="12ab";
+        var a=document.getElementById("password").value;
+        if(a!=password){
+        var a=document.getElementById("abc")
+        var b=document.getElementById("btn")
+           
+        if (a.style.justifyContent == "center") {
+            a.style.justifyContent = "flex-end";
+            a.style.alignItems="flex-end"
+            b.style.transform="skew(-15deg)"
+        }
+        else if (a.style.justifyContent == "flex-end" && a.style.alignItems=="flex-end") {
+            a.style.justifyContent = "flex-start";
+            a.style.alignItems="flex-start"
+            b.style.transform="skew(15deg)"
+        }
+        else if (a.style.justifyContent == "flex-start" && a.style.alignItems=="flex-start") {
+            a.style.justifyContent = "flex-start";
+            a.style.alignItems="flex-end"
+            b.style.transform="skew(15deg)"
+        }
+        else if (a.style.justifyContent == "flex-start" && a.style.alignItems=="flex-end") {
+            a.style.justifyContent = "flex-end";
+            a.style.alignItems="flex-start"
+            b.style.transform="skew(-15deg)"
+        }
+        else {
+            a.style.justifyContent = "flex-end";
+            a.style.alignItems="flex-end"
+            b.style.transform="skew(-15deg)"
+        }
+    }
+    else{
+        console.log("Password is correct")
+    }
+}
+document.getElementById("btn").addEventListener("mouseover",abc);
+function func(){
+    
+ alert("Submitted sucsessfully")
+ form.reset(); // Clear form fields
+
+  }
+  </script>
+</body>
+</html>
